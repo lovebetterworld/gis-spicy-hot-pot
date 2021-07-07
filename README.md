@@ -1,7 +1,18 @@
 # GIS麻辣香锅
 
-## 介绍
+仓库地址：https://gitee.com/AiShiYuShiJiePingXing/gis-spicy-hot-pot
+
+克隆仓库：`git clone https://gitee.com/AiShiYuShiJiePingXing/gis-spicy-hot-pot`
+
 GIS麻辣香锅集合汇总有关于GIS知识学习、工具学习、教程系列、GIS笔记、开发研究等各个有关于GIS的行业解决方案。
+
+
+
+## 推荐阅读方式
+
+因为文章都是Markdown格式，推荐使用Typora进行阅读。有关GIS的浏览器标签，可以添加好友免费赠送。
+
+![image-20210707123815795](https://gitee.com/AiShiYuShiJiePingXing/img/raw/master/img/image-20210707123815795.png)
 
 
 
