@@ -4,6 +4,8 @@ Three.js官网：https://threejs.org/
 
 ThreeJS电子书：http://www.yanhuangxueyuan.com/Three.js/
 
+掘进Three.js系列文章：https://juejin.cn/tag/three.js
+
 
 
 Three.js是基于原生WebGL封装运行的三维引擎，在所有WebGL引擎中，Three.js是国内文资料最多、使用最广泛的三维引擎。
