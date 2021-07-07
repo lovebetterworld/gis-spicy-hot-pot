@@ -1,7 +1,5 @@
 - [Docker 部署 Geoserver](https://blog.csdn.net/u010206379/article/details/109764629)
 
-  
-
 默认账号密码：
 
 ```json
