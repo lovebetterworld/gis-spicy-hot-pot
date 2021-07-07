@@ -56,6 +56,14 @@ OSCHINA：
 - 森友鹿锘：https://my.oschina.net/u/4582495?tab=newest&catalogId=0
   - WebGL和ThingJS案例：https://my.oschina.net/u/4582495?tab=popular
 
+博客园：
+
+- 李晓晖：https://home.cnblogs.com/u/naaoveGIS/
+  - WebGIS：https://www.cnblogs.com/naaoveGIS/category/600559.html
+  - 开源GIS系列：https://www.cnblogs.com/naaoveGIS/category/602352.html
+  - 轨迹研究系列：https://www.cnblogs.com/naaoveGIS/category/1028910.html
+  - ArcGIS相关系列：https://www.cnblogs.com/naaoveGIS/category/933275.html
+
 
 
 - 郭隆邦技术博客：http://www.yanhuangxueyuan.com/

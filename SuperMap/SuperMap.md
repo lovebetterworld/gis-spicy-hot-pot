@@ -1,35 +1,15 @@
 # SuperMap
 
-官网地址：https://iclient.supermap.io/
+官网地址：https://www.supermap.com/
 
-Github地址：https://github.com/SuperMap/iClient-JavaScript
+超图软件研发的大型 GIS 基础软件系列——SuperMap GIS，是二三维一体化的空间数据采集、存储、管理、分析、处理、制图与可视化的工具软件，更是赋能各行业应用系统的软件开发平台。
 
-
-
-SuperMap iClient JavaScript (简称 iClient-JS )是云 GIS 网络客户端开发平台。基于现代 Web  技术栈全新构建，是 SuperMap 云四驾马车和在线 GIS 平台系列产品的统一 JS 客户端。集成了领先的开源地图库、可视化库，且核心代码以 Apache2 协议完全开源，连接了 SuperMap  与开源社区。提供了全新的大数据可视化、实时流数据可视化功能，通过本产品可快速实现浏览器和移动端上美观、流畅的地图呈现与空间分析。
+在 SuperMap GIS 10i (2020) 中，超图软件进一步完善了 GIS 基础软件五大技术体系 (BitDC)，即 大数据 GIS、 人工智能GIS、 新一代三维 GIS、 分布式                        GIS 和 跨平台 GIS 技术体系，丰富和革新了 GIS 理论与技术，为各行业信息化赋能更强大的地理智慧。
 
 
 
-# SuperMap iClient JavaScript 10i(2020) — 云 GIS 网络客户端开发平台
+# 企业简介
 
-基于现代 Web 技术栈全新构建，是 SuperMap 云 GIS 和在线 GIS 平台系列产品的统一 JavaScript 客户端。
-集成了领先的开源地图库和可视化库，且核心代码以 Apache License 2.0 协议完全开源，连接了 SuperMap 与开源社区。提供了全新的大数据可视化和数据流可视化功能，
-通过本产品可快速实现浏览器和移动端上美观、流畅的地图呈现与空间分析。
+超图集团是全球第三大、亚洲第一大[地理信息系统](https://baike.baidu.com/item/地理信息系统/171830)（GIS）软件厂商 [1] ，由母公司超图软件（股票代码：300036） [8] 及旗下的超图信息、超图国际、上海南康、南京国图、北京安图、上海数慧等一级(全资)子公司，地图慧、日本超图等二级(控股)子公司，以及遍布全国的分公司、办事处组成超图集团 [9] 。集团总部设于北京，注册资本44953.7367万元 [10] 。超图正式员工3000余人 [11] ，2019年年营业收入逾17亿元 [6] 。
 
-![image-20210707100954296](https://gitee.com/AiShiYuShiJiePingXing/img/raw/master/img/image-20210707100954296.png)
-
-
-
-# 开源产品的上佳实践
-
-全面对接集成了 [Leaflet](http://leafletjs.com/)、[OpenLayers](https://openlayers.org/)、 [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api/)、 [ECharts](http://echarts.baidu.com/)、[MapV](http://mapv.baidu.com/) 等常用的地图库和图表库，避免用户的重复学习和成本投入
-
-# Morden WebGIS
-
-基于 H5、WebGL、WebSocket、ES6、RequireJS、ReactJS 等现代 Web 技术栈，完全重建
-
-### 大数据可视化
-
-为 SuperMap iServer 9D 的分布式分析服务、实时数据服务等提供统一的 API 和可视化呈现，同时支持海量数据的热度图、蜂巢图、格网图、散点图、矢量瓦片等多种可视化渲染方式。
-
-![重庆出租车动态轨迹2](https://www.supermap.com/pic/anlipic/201792216937199.gif)
+超图下设基础软件、应用软件、云服务三大业务板块 [9] ，并坚持构建生态伙伴体系，通过1000余家生态伙伴为数十个行业的政府和企事业单位信息化全面赋能。
