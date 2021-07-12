@@ -7,7 +7,7 @@
 
   ![img](https:////upload-images.jianshu.io/upload_images/5479420-305f928744cab142.png?imageMogr2/auto-orient/strip|imageView2/2/w/519)
 
-  image.png
+  
 
 - 3D WebGIS是近期未来的方向，因为大数据可视化，最佳配合展示方式是3D地图
 
@@ -20,8 +20,6 @@
 - 目前行业上流行的，有些用户基数的地图JS库，主要有：ArcGIS API for JavaScript、OpenLayers、Leaflet、Mapbox、maptalks.js
 
 ![img](https:////upload-images.jianshu.io/upload_images/5479420-b2cfe05243e288d7.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200)
-
-image.png
 
 从图中可以看出，地图视图支持2D/3D，3D的效果主要是 SceneView 类提供。
  然后到地图图层Layers，提供了丰富的类和接口，各种各样的图层要素，Graphic还是Geometry，还是栅格、图片等都应有尽有，我们可以通过这些接口去绘制图形或者展示图层元素、符号渲染等。

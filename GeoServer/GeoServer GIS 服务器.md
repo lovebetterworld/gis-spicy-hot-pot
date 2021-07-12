@@ -16,6 +16,19 @@ GeoServer是一个模块化应用程序，通过扩展添加了附加功能。[W
 
 
 
+具备一下特征：
+兼容WMS和WFS特性程序员
+
+支持PostGIS、Shapefile、ArcSDE、Oracle、VPF、MySQL、MapInfogithub
+
+支持上百种投影web
+
+可以将网络地图输出为JPEG、GIF、PNG、SVG、KML等格式sql
+
+可以运行在任何基于J2EE/Servlet容器之上数据库
+
+
+
 # GeoServer系列教程
 
 简书：
