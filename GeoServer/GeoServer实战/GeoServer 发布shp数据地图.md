@@ -1,0 +1,147 @@
+- [GeoServer 发布shp数据地图](https://www.cnblogs.com/ssjxx98/p/12528688.html)
+
+**前言**：GeoServer 是 OpenGIS Web 服务器规范的 J2EE 实现，利用 GeoServer  可以方便的发布地图数据，允许用户对特征数据进行更新、删除、插入操作，通过 GeoServer  可以比较容易的在用户之间迅速共享空间地理信息。因此运行GeoServer服务的前提是配置好Java环境。本文将GeoServer部署在Tomcat服务器上。
+
+
+
+# 一、关于数据
+
+地理数据一般可分为矢量数据和栅格数据，本文使用shp矢量数据作为数据源发布地图。对于最常见的几种地理数据源，GeoServer的支持情况如下：
+
+|   数据源   | GeoServer支持情况 |
+| :--------: | :---------------: |
+|    shp     |         √         |
+|  GeoJSON   |         ×         |
+|  mid/mif   |         ×         |
+|  GeoTIFF   |         √         |
+|  PostGIS   |         √         |
+| 其他数据库 |     需要插件      |
+
+# 二、GeoServer安装
+
+首先在[GeoServer的官网](http://geoserver.org/)下载GeoServer。为了部署到Tomcat服务器上，这里选择下载war包。
+
+![image-20200319211902766](https://s1.ax1x.com/2020/03/20/86un7d.png)
+
+将下载好的war包部署到Tomcat的webapps目录下，并运行Tomcat，在本地即可通过URL：http://localhost:8080/geoserver访问。
+
+如果你更改了Tomcat的默认端口，则需要通过自己设置的端口访问。
+
+如果Tomcat部署在云服务器上，通过公网可以使用URL：http://ip:port/geoserver访问，其中ip为云服务器公网ip，port为开放的端口。
+
+GeoServer默认用户名为：**admin**，密码为：**geoserver**。在网页右上角输入用户名和密码即可登录到GeoServer。
+
+![Snipaste_2020-03-19_16-24-28](https://s1.ax1x.com/2020/03/20/86um0H.png)
+
+# 三、通过shp文件发布地图
+
+## 1. 新建工作区
+
+![Snipaste_2020-03-19_17-18-34](https://s1.ax1x.com/2020/03/20/86uene.png)
+
+在左侧数据栏打开**工作区**，并选择**添加新的工作区**，按照下图设置即可。
+
+![Snipaste_2020-03-19_17-37-37](https://s1.ax1x.com/2020/03/20/86uVXD.png)
+
+## 2. 添加shp数据源
+
+![Snipaste_2020-03-19_17-40-21](https://s1.ax1x.com/2020/03/20/86uE6O.png)
+
+在左侧数据栏打开**数据存储**，并选择**添加新的数据存储**，出现如下界面：
+
+![Snipaste_2020-03-19_21-39-4322222222222222222](https://s1.ax1x.com/2020/03/20/86uKAA.png)
+
+这里主要先介绍两个选项：
+
+- Directory of spatial files（shapefiles），将一个包含shp的文件夹连接到数据源
+- Shapefile，加载单个shp文件到数据源
+
+对于单个shp数据而言，两种方式创建数据源区别不是特别大。因为我有多个shp数据，所以这里选择Directory of spatial files（shapefiles）。出现如下界面：
+
+![Snipaste_2020-03-19_17-55-31](https://s1.ax1x.com/2020/03/20/86uQht.png)
+
+根据图中提示设置相应的参数，注意被连接的shp文件（或文件夹）必须储存在**本地**，也就是说如果你在云服务器上进行上述操作，就需要将数据储存到云服务器上。点击保存按钮完成数据源的创建。
+
+## 3. 发布地图图层
+
+一般在完成数据源创建后会自动弹出新建图层的窗口。如果你加载的也是多个shp文件的文件夹，那你将在此页面看到多个待发布的图层（每个图层对应一个shp文件）。不过在这里只能先发布其中一个图层。
+
+![Snipaste_2020-03-19_18-30-34](https://s1.ax1x.com/2020/03/20/86u19P.png)
+
+点击其中一个**发布**按钮，可以看到图层信息的编辑页面，其中需要设置的参数主要是基本信息、坐标参考和边框信息，见下图：
+
+![Snipaste_2020-03-19_19-02-35](https://s1.ax1x.com/2020/03/20/86u31f.png)
+
+![Snipaste_2020-03-19_18-35-05](https://s1.ax1x.com/2020/03/20/86uGjS.png)
+
+为了解释上图中的参数，这里补充一些名词解释（。）
+
+------
+
+1. **OGC**：Open Geospatial Consortium (OGC)开放地理空间信息联盟，它制定了数据和服务的一系列标准，GIS厂商按照这个标准进行开发可保证空间数据的互操作。相信这也是各位GIS开发者的“老朋友”了。
+
+2. **EPSG和OGP**：European Petroleum Survey Group  (EPSG)欧洲石油调查组，它成立于1986年，并在2005年重组为Internation Association of Oil &  Gas Producers（OGP）国际石油和天然气生产者协会。它负责维护并发布坐标参考系统的数据集参数，以及坐标转换描述。
+
+3. **SRS**：代表空间参考系（Spatial Reference System），也叫坐标参考系统**CRS**（coordinate reference system），是基于局部的、区域的或者全球的坐标系统，常被用来定位地理实体。
+
+4. **WKT**：WKT（well-known text）是OGC的简单要素规范（Simple Feature Specification，**SFS**）中定义的一种文本标记语言，用于表示矢量几何对象、空间参照系统及空间参照系统之间的转换。
+    WKT可以描述SRS，其中包括对参考椭球SPHEROID、基准面DATUM、坐标系（地心坐标系GEOCCS、地理坐标系GEOGCS、投影坐标系PROJCS）等描述。
+
+   例如：WGS 84的OGC-WKT描述如下（注意这里的“WGS 1984”是指大地基准面，“WGS 84”既指参考椭球，又指地理坐标系（即WGS 84坐标系）。不过有时，”WGS 84“兼有三者的含义）
+
+   ```
+   GEOGCS["WGS 84",
+       DATUM["WGS_1984",
+           SPHEROID["WGS 84",6378137,298.257223563,
+               AUTHORITY["EPSG","7030"]],
+           AUTHORITY["EPSG","6326"]],
+       PRIMEM["Greenwich",0,
+           AUTHORITY["EPSG","8901"]],
+       UNIT["degree",0.01745329251994328,
+           AUTHORITY["EPSG","9122"]],
+       AUTHORITY["EPSG","4326"]]
+   ```
+
+5. **SRID**：Spatial Reference System Identifier  (SRID)空间参考系统标识符，是用来明确标识投影的、非投影的、独立的空间坐标系定义的独一无二的值。每一个SRS都可以用一个唯一的SRID整数来表示。OGP定义的EPSG code实质上是权威机构对SRID的一种实现，因此二者是一致的。
+
+   例如：WGS84 — SRID 4326，也表示为EPSG 4326
+
+------
+
+所以上图中SRS设置为EPSG:4326就是将空间参考系设置为WGS84，通过**查找**按钮可以查询每种空间参考系对应的EPSG代码。
+
+若发布后的地图不能正常预览，可以尝试更改这里的SRS，例如：在web map中同样常见的 EPSG:3857  (Pseudo-Mercator)，伪墨卡托投影，即我们经常提到的web墨卡托投影，诸如Google地图，OpenStreetMap等web地图都使用这一坐标系。
+
+## 4.  发布剩余图层
+
+前面提到了，对于文件夹的数据源，新建图层时只能发布其中一个shp数据，因此，我们还需要将文件夹中剩余的shp数据进行发布。在左侧找到**图层**，选择**添加新的资源**。
+
+![Snipaste_2020-03-19_19-19-43](https://s1.ax1x.com/2020/03/20/86uYng.png)
+
+在接下来的页面中，选择我们之前创建的数据源，即可看到之前尚未发布的图层，在这里重复之前的操作，将这两个图层进行发布即可。
+
+![Snipaste_2020-03-19_19-26-01](https://s1.ax1x.com/2020/03/20/86utBQ.png)
+
+## 5. 预览发布的图层
+
+在左侧数据栏选择**Layer Preview** 可以在右侧看到已经发布的所有图层，找到刚才发布的图层，选择OpenLayers即可预览。
+
+![Snipaste_2020-03-19_23-42-59](https://s1.ax1x.com/2020/03/20/86uN7j.png)
+
+也可以在下拉菜单中选择一种服务进行预览，这里有WMS和WFS两类服务可选。关于WMS、WFS以及WMTS、WCS、WPS等常见地图服务的详细区别见我另一篇博客：[WMS、WFS、WCS、WPS、WMTS等常见地图服务的区别](https://blog.csdn.net/df1445/article/details/104989551)。
+
+这里直接用Openlayers预览看效果。
+
+![Snipaste_2020-03-19_23-57-21](https://s1.ax1x.com/2020/03/20/86uaAs.png)
+
+不难看到，我们的WMS服务的URL就是：`http://localhost:8080/geoserver/xjs/wms`，在后面跟上一系列请求参数就访问到我们发布的图层了。
+
+把浏览器上的URL复制下来，localhost改成公网ip就能通过公网访问我们发布的地图啦！
+
+```
+http://localhost:8080/geoserver/xjs/wms?service=WMS&version=1.1.0&request=GetMap&layers=xjs%3ABoundaryChn2_4l&bbox=73.44696044921875%2C3.408477306365967%2C135.08583068847656%2C53.557926177978516&width=768&height=624&srs=EPSG%3A4326&format=application/openlayer
+```
+
+------
+
+关于地图的配置、美化等操作将会在下一篇博客中进行说明。
