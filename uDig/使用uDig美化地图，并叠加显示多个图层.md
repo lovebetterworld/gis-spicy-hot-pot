@@ -126,7 +126,7 @@ http://localhost:8080/geoserver/xjs/wms?service=WMS&version=1.1.0&request=GetMap
 
 ## 2.创建图层组
 
-将已发布的多个图层创建为一个图层组，在Layer Preview预览时即可作为一个目标进行预览，这样也能实现图层的叠加显示。
+将已发布的m多个图层创建为一个图层组，在Layer Preview预览时即可作为一个目标进行预览，这样也能实现图层的叠加显示。
 
 具体操作如下：
 
