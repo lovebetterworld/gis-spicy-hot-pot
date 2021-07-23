@@ -1,4 +1,4 @@
-# java实现geoserver通过rest自动发布postigs图层
+# Java实现geoserver通过rest自动发布postigs图层
 
 geoserver自带rest服务，可以发布shp，postgis等数据源。本文目前只说明怎么通过geoserver的rest发布postgis表数据。
 

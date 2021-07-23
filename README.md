@@ -64,6 +64,14 @@ OSCHINA：
   - 轨迹研究系列：https://www.cnblogs.com/naaoveGIS/category/1028910.html
   - ArcGIS相关系列：https://www.cnblogs.com/naaoveGIS/category/933275.html
 
+- 莫小龙：https://home.cnblogs.com/u/s313139232/
+  - GeoServer系列：https://www.cnblogs.com/s313139232/category/1251991.html
+
+- 陈小强：https://home.cnblogs.com/u/chenjq0717/
+  - GeoServer系列：https://www.cnblogs.com/chenjq0717/category/1663785.html
+
+
+
 
 
 - 郭隆邦技术博客：http://www.yanhuangxueyuan.com/
