@@ -2,16 +2,18 @@
 
 原文地址：https://blog.csdn.net/qq_35732147/article/details/85088639
 
-一、示例简介
+# 一、示例简介
 
-    这个示例展示了通过XYZ格式的URL访问瓦片地图数据，有关XYZ方式加载瓦片地图可以参考这篇文章：万能瓦片加载秘籍。
-    
-    本示例加载的瓦片地图是Thunderforest的地图数据，Thunderforest的官网地址是：http://www.thunderforest.com/
-    
-    注意它不是完全免费的开源地图，它的收费规则是：
-    
-    所以，可以免费使用于个人的爱好项目上。
-二、代码详解
+这个示例展示了通过XYZ格式的URL访问瓦片地图数据，有关XYZ方式加载瓦片地图可以参考这篇文章：万能瓦片加载秘籍。
+
+本示例加载的瓦片地图是Thunderforest的地图数据，Thunderforest的官网地址是：http://www.thunderforest.com/
+
+
+注意它不是完全免费的开源地图，它的收费规则是：
+
+所以，可以免费使用于个人的爱好项目上。
+
+# 二、代码详解
 
 ```js
 <!DOCTYPE html>
@@ -48,13 +50,13 @@
 ```
 加载结果：
 
-![img](https://img-blog.csdnimg.cn/20181219093211633.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NzMyMTQ3,size_16,color_FFFFFF,t_70)三、补充
+# ![img](https://img-blog.csdnimg.cn/20181219093211633.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NzMyMTQ3,size_16,color_FFFFFF,t_70)三、补充
 
-```js
 许多瓦片地图厂商为了提高瓦片数据加载的效率，往往提供了多个瓦片数据路径（URL），如果为应用程序赋予从多条数据路径选择最优路径的功能，那就能提高瓦片数据加载的效率。
 
 OpenLayers正是有这样的功能，来看通过多条瓦片数据路径加载高德地图的示例：
 
+```js
 <!DOCTYPE html>
 <html lang="en">
 <head>
