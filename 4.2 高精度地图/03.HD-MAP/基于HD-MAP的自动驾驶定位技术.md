@@ -2,7 +2,7 @@
 
 # 0. 前言
 
-最近公司需要实现基于HD-MAP的自动驾驶定位技术，而这方面之前涉及的较少，自动驾驶这部分的定位技术与SLAM类似，但是缺少了建图的工程，使用HD-MAP的形式来实现车辆的定位（个人感觉类似机器人SLAM当中的初始化+回环定位的问题）。下面是我个人的思考与归纳
+最近公司需要实现基于HD-MAP的自动驾驶定位技术，而这方面之前涉及的较少，自动驾驶这部分的定位技术与SLAM类似，但是缺少了建图的工程，使用HD-MAP的形式来实现车辆的定位（个人感觉类似机器人SLAM当中的初始化+回环定位的问题）。下面是我个人的思考与归纳。
 
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/501e09be1ed549599c0ab798cb8af1a2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBASGVybWl0X1JhYmJpdA==,size_20,color_FFFFFF,t_70,g_se,x_16)](https://img-blog.csdnimg.cn/501e09be1ed549599c0ab798cb8af1a2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBASGVybWl0X1JhYmJpdA==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
@@ -31,7 +31,9 @@ G 停车位的检测:由于停车线和停车位角点是从IPM图像中检测�
 # 2. Road-SLAM
 
 Road-SLAM作为基于道路标线车的道级精度SLAM，B站上也有博主对该文章的[详细介绍](https://www.bilibili.com/video/av52887955/)。
+
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/a0945602e5414f81a36bab02b5a66c1d.png)](https://img-blog.csdnimg.cn/a0945602e5414f81a36bab02b5a66c1d.png)
+
 下面是该文章的步骤：
 A stero camera获得道路图像
 
@@ -48,7 +50,9 @@ F 在回环中，进行sub-map的匹配
 G 若形成回环，则可通过sub-map中点云的三维坐标，使用ICP求位姿
 
 F 对得到的位姿进行优化
+
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/123480f092c84b05a5eb04286afcec86.png)](https://img-blog.csdnimg.cn/123480f092c84b05a5eb04286afcec86.png)
+
 下面我们用图来表示
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/28eaa3a260874856bedfc2ac7b249bdb.png)](https://img-blog.csdnimg.cn/28eaa3a260874856bedfc2ac7b249bdb.png)
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/25299719314e4340911c12b74a79c820.png)](https://img-blog.csdnimg.cn/25299719314e4340911c12b74a79c820.png)
@@ -60,6 +64,7 @@ F 对得到的位姿进行优化
 最近纽劢科技公开了他们的[技术方案](https://www.bilibili.com/video/BV11A411c7Dq/)，具体表现为通过HD-Map代替实时建图。利用相机在高精地图（HD map）种进行定位则提供了一种低成本的定位传感器，该系统使用相机作为主要传感器，在具有高精地图环境中用于自动驾驶。这里借鉴[点云PCL文章](https://mp.weixin.qq.com/s/frQTLx4PHki2YItQ_Hw00Q)。这类语义定位相较于SLAM而言缺少了鸟瞰图的投影
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/11f4c7002761415c9cb2bbb8642c81f1.png)](https://img-blog.csdnimg.cn/11f4c7002761415c9cb2bbb8642c81f1.png)
 在这张图中我们可以看到分成了好几个部分：
+
 **A.高精地图**
 
 高精度地图在自主驾驶中，通常是一种简单且灵活的环境结构表达方式代表着驾驶场景，在车辆定位中，使用**地图元素路标（ lanemarkings LA）**、**杆状物体（ pole-like objects PO）**、**标志牌（ signboards SB）**，这些元素由HD地图中连续有序的三维点集合来描述，上图的跟踪部分中的图形显示了上述语义元素，在定位系统中，可以根据当**前车辆位置和给定的搜索半径查询地图元素**，对于查询到的地标，我们以固定长度间隔采样点作为地标代表。
@@ -68,6 +73,7 @@ F 对得到的位姿进行优化
 
 为了找到高精地图元素与图像的对应关系，采用语义分割的方法提取图像的语义特征，文中提出了Resnet-18作为主干，并在Cityscape数据集上进行预训练，该网络是一个**多头部结构**，**每个头部是高精地图中一个元素（LA、PO或SB）的二进制分割，用于定位。通过使用语义分割图进行非线性优化来实现车辆姿态估计**，这里使用不同的后处理方法对高精地图中的不同元素进行语义分割，给定**车道和极点的分割结果，使用腐蚀和膨胀操作生成梯度图像**，对于**标志地标，采用拉普拉斯变换提取边缘信息，然后利用形态学运算得到平滑的梯度图像。**
 [![在这里插入图片描述](https://img-blog.csdnimg.cn/99b50956dded4f609838711e2967ed23.png)](https://img-blog.csdnimg.cn/99b50956dded4f609838711e2967ed23.png)
+
 **C.初始化**
 
 初始化模块的目的是在地图坐标系中获得相对精确的姿态估计，以便进行后续的姿态跟踪步骤,我们以从粗到精的方式介绍了一种鲁邦而精确的初始化方法，具体而言，是由**两个有效的GPS信息计算粗略的初始姿态Twb**。
