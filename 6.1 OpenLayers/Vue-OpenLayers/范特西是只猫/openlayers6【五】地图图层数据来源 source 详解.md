@@ -38,12 +38,17 @@
 
 ### 2.1 ol.source.Vector 的使用（矢量图层的数据来源）
 
-**2.1.1 基本事件(`重要`)**
+#### 2.1.1 基本事件(重要)
+
 `addfeature`，当一个要素添加到 source 中触发；
+
 `removefeature`，当要素移除时候发生；
+
 `changefeature`，当要素变化时触发；
+
 `clear`，当 source 的 clear 方法调用时候触发；
-**2.1.2 接受的参数(`重要`)**
+
+#### 2.1.2 接受的参数(重要)
 
 ```bash
 /**
@@ -68,8 +73,10 @@
 - url，要素数据的地址；
 - wrapX，是否在地图水平坐标轴上重复，默认是 true。
 
-**2.1.3 实例**
-**2.1.3.1 features 方法实现**
+#### 2.1.3 实例
+
+##### 2.1.3.1 features 方法实现
+
 这里是一个中国地图的geoJson数据。格式也是GeoJSON字符串格式。那么我们可以用来初始化一个图层。（这里只是贴了核心的部分代码，完整的请看后面博客会写）
 
 ```bash
@@ -86,7 +93,8 @@ map.addLayer(vectorLayer);
 ```
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200605111813694.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NDEwNzk1,size_16,color_FFFFFF,t_70)
-**2.1.3.2 url + format 方法实现**
+
+##### 2.1.3.2 url + format 方法实现
 
 ```js
 var vectorLayer = new ol.layer.Vector({
@@ -101,11 +109,15 @@ var vectorLayer = new ol.layer.Vector({
 
 ### 2.2 ol.source.Image的使用（提供单一的图片地图）
 
-**2.2.1 基本事件**
+#### 2.2.1 基本事件
+
 `imageloadstart`，图片地图开始加载触发的事件；
+
 `imageloadend`，图片地图加载完毕触发的事件；
+
 `imageloaderror`，图片地图加载出错时触发的事件。
-**2.2.2 接受的参数**
+
+#### 2.2.2 接受的参数
 
 ```vue
 /**

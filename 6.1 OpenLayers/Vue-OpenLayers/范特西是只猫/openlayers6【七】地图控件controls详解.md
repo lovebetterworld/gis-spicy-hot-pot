@@ -55,12 +55,19 @@ var mousePositionControl = new MousePosition({
 参数：以下参数都为可选，添加如下代码：
 
 collapsed，收缩选项，默认为true，收缩；
+
 collapseLabel，收缩后的图标按钮；
+
 collapsible，是否可以收缩为图标按钮，默认为 true；
+
 label，当 overviewmapcontrol 收缩为图标按钮时，显示在图标按钮上的文字或者符号，默认为 »；
+
 layers，overviewmapcontrol针对的图层，默认情况下为所有图层，一般这里设置的图层和map图层数据一致；
+
 render，当 overviewmapcontrol 重新绘制时，调用的函数；
+
 target，放置的 HTML 元素；
+
 tipLabel，鼠标放置在图标按钮上的提示文字。
 
 ```js

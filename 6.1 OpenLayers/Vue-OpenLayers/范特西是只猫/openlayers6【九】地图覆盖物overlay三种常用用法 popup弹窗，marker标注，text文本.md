@@ -15,8 +15,11 @@
 **2.1 vue 页面 addPopup() 方法详解**
 
 > ①：实例一个 `new Overlay()`，设置相关的属性，element 是和页面的 最外层弹窗的dom进行绑定
+>
 > ②：通过 `map.addOverlay(this.overlay)` 把 overlay弹窗添加到页面
+>
 > ③：`closer.onclick` 添加一个 x 关闭弹窗事件
+>
 > ④：通过 `this.map.on("singleclick", function(evt)` 事件点击地图触发弹窗效果
 
 具体代码如下：

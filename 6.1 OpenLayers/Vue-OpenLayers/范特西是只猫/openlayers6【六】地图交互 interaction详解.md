@@ -11,6 +11,7 @@
 在之前的文章中有写到一个地图map，是必须存在的三个属性 target ，view，layers。那么地图是不是还可以存在其他属性呢？当然是有的，现在这篇就为大家讲解另外的一个属性 `interaction` 地图的交互功能。
 
 可以看到[官网](https://openlayers.org/en/latest/apidoc/module-ol_Map-Map.html)的描述：最初添加到地图的互动。如果未指定， module:ol/interaction~defaults则使用。
+
 也就是说这个属性`不是必须` 存在的，默认使用的是 `interaction~defaults` 内容，并且是已 `Array` 数组形式存在，也就是说可以像图层一样，已多个交互功能承载在地图上。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200605141839203.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NDEwNzk1,size_16,color_FFFFFF,t_70)
 
@@ -74,7 +75,7 @@ import {
     defaults as defaultInteractions,
     DragRotateAndZoom
 } from "ol/interaction";
-1234
+
 this.map = new Map({
     target: target,
     layers: tileLayer,

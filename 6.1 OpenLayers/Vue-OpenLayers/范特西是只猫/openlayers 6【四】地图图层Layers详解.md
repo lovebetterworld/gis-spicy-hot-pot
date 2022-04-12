@@ -8,7 +8,7 @@
 
 **③** 在 openlayers 中，图层是使用 [layer](https://so.csdn.net/so/search?q=layer&spm=1001.2101.3001.7020) 对象表示的，主要有 `WebGLPoints Layer`、`热度图(HeatMap Layer)`、`图片图层(Image Layer)`、`切片图层(Tile Layer)`和 `矢量图层(Vector Layer)`五种类型，它们都是继承 Layer 类的。
 
-**④** openlayers 初始化一幅地图(map)，至少需要一个可视区域(view)，一个或多个图层( layer)， 和 一个地图加载的目标 HTML 标签(target)，其中`最重要的是图层(layer)`
+**④** **openlayers 初始化一幅地图(map)，至少需要一个可视区域(view)，一个或多个图层( layer)， 和 一个地图加载的目标 HTML 标签(target)**，其中`最重要的是图层(layer)`
 
 ## 1. 什么是图层？？？
 
@@ -87,7 +87,11 @@ initMap() {
 
 ## 4. Layers 各种图层及图层类型
 
-> 从渲染发生的地方来看，openlayers的图层主要分为两类：`Vector（矢量）和Raster（栅格）`，[矢量图](https://so.csdn.net/so/search?q=矢量图&spm=1001.2101.3001.7020)层是指在渲染发生在浏览器的图层，source返回的数据类型是矢量，如geojson的坐标串；栅格图层则是由服务器渲染，返回到浏览器的是一张张的瓦片图片，栅格图层主要是展示。
+> 从渲染发生的地方来看，openlayers的图层主要分为两类：`Vector（矢量）和Raster（栅格）`。
+
+**矢量图层是指在渲染发生在浏览器的图层，source返回的数据类型是矢量，如geojson的坐标串；**
+
+**栅格图层则是由服务器渲染，返回到浏览器的是一张张的瓦片图片，栅格图层主要是展示。**
 
 **矢量图层类型有：**
 

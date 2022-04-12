@@ -5,6 +5,7 @@
 overlay是覆盖物的意思，顾名思义就是在地图上以另外一种形式浮现在地图上，这里很多同学会跟图层layers搞混淆，主要是放置一些和地图位置相关的元素，常见的地图覆盖物为这三种类型，如：`popup 弹窗`、`label标注信息`、`text文本信息`等，而这些覆盖物都是和html中的element等价的，通过overlay的属性element和html元素绑定同时设定坐标参数——达到将html元素放到地图上的位置，在平移缩放的时候html元素也会随着地图的移动而移动。
 
 下面我们在看下官网的描述，其实map默认是存在这个属性，跟前面写的文章，图层，控件，交互都一个性质，都是`默认加载地图的情况下是允许设置默认的overlay覆盖物`，也可以在某个事件或者方法触发的时候去单独添加覆盖物。这里可以看下前面的文章描述，具体不进行详细阐述。
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200605164535169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NDEwNzk1,size_16,color_FFFFFF,t_70)
 
 ## 2. overlay 属性
@@ -66,4 +67,5 @@ overlay.on("change:position", function(){
 ## 5. 写到最后
 
 开篇我们提到了 overlay 有三种常见的用法 `popup 弹窗`、`label标注信息`、`text文本信息`
+
 详细内容参考此篇文章 [openlayers6【八】地图覆盖物overlay三种常用用法 popup弹窗，marker标注，text文本](https://editor.csdn.net/md/?articleId=106425363)

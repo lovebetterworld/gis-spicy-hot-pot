@@ -5,14 +5,18 @@
 在我们做什么事情之前，如果想完全搞懂某一样东西 `预先善其事必先利其器` ，先搞定其原理之后，在去实现他就会非常简单了，而且下次也会牢记于心。好了，下面我们就开始吧！
 
 在[openlayers](https://so.csdn.net/so/search?q=openlayers&spm=1001.2101.3001.7020)实际项目中，我们经常会遇到这种需求，通过已知道的一些经纬度坐标点位数据在地图上想要得到一块区域，并把他已更显眼的方式呈现出来。如下图所示效果。
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200527092506640.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NDEwNzk1,size_16,color_FFFFFF,t_70)
+
 要想实现下面效果，我们是用的是`VectorLayer矢量图层`去实现，就像在底图上添加一个图层效果。如下图所示
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200720094800555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NDEwNzk1,size_16,color_FFFFFF,t_70)
-只是我们现在添加的只有一层，在openlayers中，可以添加多个图层信息，会根据你添加图层的顺序一层一层叠加在地图中。
+只是我们现在添加的只有一层，**在openlayers中，可以添加多个图层信息，会根据你添加图层的顺序一层一层叠加在地图中。**
 
-```
-VectorLayer矢量图层： 矢量图层是在客户端渲染的，在 web 环境中，对应的就是浏览器。构成一个矢量图层的包含一个数据（source）和一个样式（style），数据构成矢量图层的要素，样式规定要素显示的方式和外观。一个初始化成功的矢量图层包含一个到多个要素（feature），每个要素由地理属（geometry）和多个其他的属性，可能包含名称等。
-```
+VectorLayer矢量图层： 矢量图层是在客户端渲染的，在 web 环境中，对应的就是浏览器。
+
+构成一个矢量图层的包含一个数据（source）和一个样式（style），数据构成矢量图层的要素，样式规定要素显示的方式和外观。
+
+一个初始化成功的矢量图层包含一个到多个要素（feature），每个要素由地理属（geometry）和多个其他的属性，可能包含名称等。
 
 **更多图层的理解可以访问 [openlayers 6【四】地图图层Layers详解](https://blog.csdn.net/qq_36410795/article/details/105864505) 了解更多。**
 
