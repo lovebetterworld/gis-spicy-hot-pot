@@ -1,7 +1,5 @@
 - [Openlayers 使用 GeoJSON](https://blog.csdn.net/weixin_39340061/article/details/108193732)
 
-
-
 前言
 
 GeoJSON 是一种标准的地理信息通信格式。本文简单介绍什么是 GeoJSON， 以及如何使用 Openlayers 提供的 API 读取、解析和展示 GeoJSON 描述的信息。
