@@ -18,7 +18,7 @@ addJiangSuProvinceLayer(){
         features: (new GeoJSON()).readFeatures(jiangsuJson)
     });
     this.jiangsuLayer = new LayerVec({
-        source: test,
+        source: SourceVecLayer,
     })
     // 添加图层
     this.map.addLayer(this.jiangsuLayer);
