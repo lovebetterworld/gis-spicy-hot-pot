@@ -4,8 +4,6 @@ Github地址：https://github.com/openlayers/openlayers/
 
 OpenLayers 是一个高性能、功能丰富的库，用于在 Web 上创建交互式地图。它可以显示从任何来源加载的地图图块、矢量数据和标记。
 
-
-
 ## 2 OpenLayers系列教程
 
 CSDN：
@@ -15,8 +13,8 @@ CSDN：
 - 不睡觉的怪叔叔：[开源GIS](https://blog.csdn.net/qq_35732147/category_7819503_2.html)
 - 韩慧兵：[WebGIS-Openlayers专题](https://blog.csdn.net/xiaohan2826/category_6550221.html)
 - [OpenLayer3 and 4_](https://blog.csdn.net/weixin_40184249/category_9275865.html)
-
-
+- [Openlayers API整理 - SegmentFault 思否](https://segmentfault.com/a/1190000020297846)
+- [GIS相关_霸道流氓气质的博客-CSDN博客](https://blog.csdn.net/badao_liumang_qizhi/category_10826479_3.html)
 
 ## 3 OpenLayers博文
 
