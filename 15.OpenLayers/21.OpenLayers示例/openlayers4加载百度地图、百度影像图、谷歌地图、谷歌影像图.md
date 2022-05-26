@@ -1,7 +1,5 @@
 - [openlayers4加载百度地图、百度影像图、谷歌地图、谷歌影像图](https://www.giserdqy.com/secdev/openlayers/114/?spm=a2c4e.10696291.0.0.29c019a4GuKFEP)
 
-
-
 ```js
 // 自定义分辨率和瓦片坐标系
 var resolutions = [];
