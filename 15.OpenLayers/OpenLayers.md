@@ -20,6 +20,8 @@ CSDN：
 
 | 博文系列                                                     |
 | ------------------------------------------------------------ |
+| [GIS开发_OpenLayers教程 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/341896668) |
+| [QGIS+PostgreSQL/PostGIS+GeoServer+OpenLayers 开源webGIS部署一条龙_CSTopDown的博客-CSDN博客](https://blog.csdn.net/weixin_41952724/article/details/118551718) |
 | [OpenLayer学习之绘制几何图形_](https://hpugis.blog.csdn.net/article/details/80743493) |
 | [OpenLayer学习之加载天地图_](https://hpugis.blog.csdn.net/article/details/80752564) |
 | [OpenLayer扩展插件_openlayers 插件](https://hpugis.blog.csdn.net/article/details/80726606) |
@@ -62,4 +64,5 @@ CSDN：
 | [OL4通过ajax加载geoserver中WMS的GetFeatureInfo实现点击查询（解决跨域问题）_wms点击查询](https://hpugis.blog.csdn.net/article/details/88086040) |
 | [OL4如何以TMS服务调用WMTS服务的缓存切片_](https://hpugis.blog.csdn.net/article/details/89408562) |
 | [OL4使用mapV_mapv openlayers](https://hpugis.blog.csdn.net/article/details/89473877) |
+| [OpenLayers 3+Geoserver+PostGIS实现点击查询_遥想公瑾当年的博客-CSDN博客](https://blog.csdn.net/freeland1/article/details/50937020) |
 
