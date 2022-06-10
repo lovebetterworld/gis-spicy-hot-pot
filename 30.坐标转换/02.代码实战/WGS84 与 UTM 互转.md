@@ -2,6 +2,8 @@
 - [UTM坐标与GPS经纬度(WGS84)的相互转换_Alan Lan的博客-CSDN博客_utm转经纬度](https://blog.csdn.net/A_L_A_N/article/details/99300241)
 - [简单的WGS84转UTM程序[C++\]_HRex39的博客-CSDN博客](https://blog.csdn.net/weixin_47047999/article/details/118463363)
 - [UTM坐标和WGS84坐标（如何转换？）_一颗小树x的博客-CSDN博客_utm坐标系与wgs84 坐标系](https://blog.csdn.net/qq_41204464/article/details/104543636)
+- [经纬度，墨卡托等坐标转换-Java架构师必看 (javajgs.com)](https://javajgs.com/archives/17722)
+- [openlayer 4326与3857坐标互转之Java版 - 英哥boss - 博客园 (cnblogs.com)](https://www.cnblogs.com/code-chen/p/13620793.html)
 
 ## 一、安装pyproj
 
