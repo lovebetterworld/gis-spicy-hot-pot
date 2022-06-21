@@ -10,7 +10,7 @@
 
 利用postGIS将shp数据导入到postgreSQL中：
 
-  ![img](https://images0.cnblogs.com/blog/656746/201412/312320332479208.png)     
+![img](https://images0.cnblogs.com/blog/656746/201412/312320332479208.png)     
 
 ![img](https://images0.cnblogs.com/blog/656746/201412/312321224033258.png)      
 

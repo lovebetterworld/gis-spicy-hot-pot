@@ -179,342 +179,93 @@ var SetMark = (function() {
 })()
 ```
 
-
-
-
-
-
-
 实例化上面的类，就可以使用了 Function.js
-
-
 
 ```javascript
 /** add mark
-
-
-
  * para
-
-
-
  * var mark = new SetMark({
-
-
-
         markCoordinate: [0, 0],
-
-
-
         markAnchor: [0.5, 0.96],
-
-
-
         markImage: 'https://openlayers.org/en/v4.0.1/examples/data/icon.png',
-
-
-
     });
-
-
-
  **/
-
-
-
 /** add one point **/
-
-
-
 function MarkTesting() {
-
-
-
     var mark = new SetMark({
-
-
-
         markCoordinate: [80, -50]
-
-
-
     });
-
-
-
     $("#addOneMark").click(function () {
-
-
-
         mark.createMark();
-
-
-
         //mark.addClick();
-
-
-
     });
-
-
-
     $("#delOneMark").click(function () {
-
-
-
         mark.deleteMark();
-
-
-
     });
-
-
-
     $("#chaOneMark").click(function () {
-
-
-
         mark.changeMark('timg.png');
-
-
-
     });
-
-
-
 }
-
-
-
 MarkTesting();
-
-
-
 /** add two points **/
-
-
-
 function MarksTesting() {
-
-
-
     var mark = new Array();
-
-
-
     var markID = new Array();  // [[坐标对], 存放序号] 删除或修改某一个点时
-
-
-
     var markCoordinates = [[0,0], [50, 60], [10, 80]];
-
-
-
     var len = markCoordinates.length;
-
-
-
     for (var i = 0; i < len; i++) {
-
-
-
         mark[i] = new SetMark({
-
-
-
             markCoordinate: markCoordinates[i]
-
-
-
         });
-
-
-
         markID[i] = [markCoordinates[i], i];
-
-
-
         var k  = 0;
-
-
-
     }
-
-
-
     $("#addMoreMark").click(function () {
-
-
-
         for (var i = 0; i < len; i++) {
-
-
-
             mark[i].createMark();
-
-
-
             //mark[1].addClick();
-
-
-
         }
-
-
-
     });
-
-
-
     $("#delMoreMark").click(function () {
-
-
-
         for (var i = 0; i < len; i++) {
-
-
-
             mark[i].deleteMark();
-
-
-
         }
-
-
-
     });
-
-
-
     $("#chaMoreMark").click(function () {
-
-
-
         for (var i = 0; i < len; i++) {
-
-
-
             mark[i].changeMark('123.png');
-
-
-
         }
-
-
-
     });
-
-
-
 }
-
-
-
 MarksTesting();
 ```
 
-
-
 HTML部分为：CommonVariable.js 和 SetMap.js见[OpenLayers3学习一：地图加载（以类为接口）](http://blog.csdn.net/u013719339/article/details/77898952)
-
-
 
 ```html
 <!DOCTYPE html>
-
-
-
 <html>
-
-
-
 <head>
-
-
-
     <meta charset="UTF-8">
-
-
-
     <title>OpenLayers3Exercise1</title>
-
-
-
     <link rel="stylesheet" href="ol.css" type="text/css">
-
-
-
     <script src="ol.js"></script>
-
-
-
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-
-
 </head>
-
-
-
 <body>
-
-
-
     <div id="map" class="map"></div>
-
-
-
     <button id="addOneMark">添加一个点</button>
-
-
-
     <button id="addMoreMark">添加多个点</button>
-
-
-
     <button id="delOneMark">删除一个点</button>
-
-
-
     <button id="delMoreMark">删除多个点</button>
-
-
-
     <button id="chaOneMark">改变一个图标</button>
-
-
-
     <button id="chaMoreMark">改变多个图标</button>
-
-
-
  
-
-
-
     <script type="text/javascript" src="CommonVariable.js"></script>
-
-
-
     <script type="text/javascript" src="SetMap.js"></script>
-
-
-
     <script type="text/javascript" src="SetMark.js"></script>
-
-
-
  
-
-
-
     <script type="text/javascript" src="Function.js"></script>
-
-
-
 </body>
-
-
-
 </html>
 ```
