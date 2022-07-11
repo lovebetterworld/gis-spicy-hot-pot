@@ -18,9 +18,7 @@ GIS麻辣香锅集合汇总有关于GIS知识学习、工具学习、教程系�
 - [高精度地图动态数据图层接口参数](https://gitee.com/AiShiYuShiJiePingXing/gis-spicy-hot-pot/blob/master/%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E5%9B%BE%E5%B1%82%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0.md)
 - [高精度地图在车路协同系统中的统一化应用探索](https://gitee.com/AiShiYuShiJiePingXing/gis-spicy-hot-pot/blob/master/%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E5%9C%A8%E8%BD%A6%E8%B7%AF%E5%8D%8F%E5%90%8C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E7%BB%9F%E4%B8%80%E5%8C%96%E5%BA%94%E7%94%A8%E6%8E%A2%E7%B4%A2.md)
 
-## BigMap、CesiumJS、GeoServer、GeoTools、GIS博文、GIS基础、GIS可视化、LeafleJS、Mapbox、MapWindow、Openlayers、QGIS、SuperMap、ThreeJS、WebGL
-
-
+BigMap、CesiumJS、GeoServer、GeoTools、GIS博文、GIS基础、GIS可视化、LeafleJS、Mapbox、MapWindow、Openlayers、QGIS、SuperMap、ThreeJS、WebGL
 
 ## 开源博客系列
 
