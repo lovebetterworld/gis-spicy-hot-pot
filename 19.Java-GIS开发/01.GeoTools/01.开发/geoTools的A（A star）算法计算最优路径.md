@@ -16,7 +16,7 @@
 
 开发语言java
 
-```
+```xml
 <dependency>   
     <groupId>org.geotools</groupId>    
     <artifactId>gt-graph</artifactId>   
@@ -54,7 +54,7 @@ Node（点）是将要建模的对象，它可以指的是实际地图中的一�
 
 需要引入依赖
 
-```
+```xml
 <dependency>
     <groupId>org.geotools</groupId>
     <artifactId>gt-shapefile</artifactId>
@@ -62,39 +62,36 @@ Node（点）是将要建模的对象，它可以指的是实际地图中的一�
 </dependency>
 ```
 
-```
-    public static void main(String[] args) throws IOException {
-        String filePath = "F:/binjiang.shp";
-        File shapeFile = new File(filePath);
+```java
+public static void main(String[] args) throws IOException {
+    String filePath = "F:/binjiang.shp";
+    File shapeFile = new File(filePath);
 
-        FileDataStore dataStore = FileDataStoreFinder.getDataStore(shapeFile);
-        SimpleFeatureSource featureSource = dataStore.getFeatureSource();
+    FileDataStore dataStore = FileDataStoreFinder.getDataStore(shapeFile);
+    SimpleFeatureSource featureSource = dataStore.getFeatureSource();
 
-        SimpleFeatureCollection simpleFeatureCollection = featureSource.getFeatures();
-        Graph graph = buildGraph(simpleFeatureCollection);
+    SimpleFeatureCollection simpleFeatureCollection = featureSource.getFeatures();
+    Graph graph = buildGraph(simpleFeatureCollection);
+}
+
+private static Graph buildGraph(FeatureCollection fc) {
+    LineStringGraphGenerator lineStringGen = new LineStringGraphGenerator();
+    FeatureGraphGenerator featureGen = new FeatureGraphGenerator(lineStringGen);
+    FeatureIterator iter = fc.features();
+    while (iter.hasNext()) {
+        Feature next = iter.next();
+        featureGen.add(next);
     }
-
-    private static Graph buildGraph(FeatureCollection fc) {
-        LineStringGraphGenerator lineStringGen = new LineStringGraphGenerator();
-        FeatureGraphGenerator featureGen = new FeatureGraphGenerator(lineStringGen);
-        FeatureIterator iter = fc.features();
-
-        while (iter.hasNext()) {
-            Feature next = iter.next();
-            featureGen.add(next);
-        }
-
-        iter.close();
-
-        return featureGen.getGraph();
-    }
+    iter.close();
+    return featureGen.getGraph();
+}
 ```
 
 ### 2、LineString
 
 和上面的方式差不多，传入LineString的数据格式，通过LineStringGraphGenerator构建图，生成器会将lineString转换成图中的点和边放入图中
 
-```
+```java
 LineStringGraphGenerator lineStringGraphGenerator = new LineStringGraphGenerator();
 lineStringGraphGenerator.add(lineString);
 BasicDirectedGraph graph = (BasicDirectedGraph)generator.getGraph();
@@ -171,31 +168,31 @@ Graph graph = graphGenerator.getGraph();
 
 A*算法的遍历中,f(x) = g(x) + h(x)。g(x)对应的是两个点之间移动的消耗规则， h(x)是引导函数，引导路径朝着终点的方向进行。
 
-```
+```java
 AStarIterator.AStarFunctions asFunction = new AStarIterator.AStarFunctions(destination) {
 
-@Override
-public double cost(AStarIterator.AStarNode aStarNode, AStarIterator.AStarNode aStarNode1) {
-    Edge edge;
-    double cost = Integer.MAX_VALUE;
-    edge = ((DirectedNode)aStarNode.getNode()).getOutEdge((DirectedNode) aStarNode1.getNode());
-    
-    if(edge != null){
-        cost = (double) edge.getObject();
+    @Override
+    public double cost(AStarIterator.AStarNode aStarNode, AStarIterator.AStarNode aStarNode1) {
+        Edge edge;
+        double cost = Integer.MAX_VALUE;
+        edge = ((DirectedNode)aStarNode.getNode()).getOutEdge((DirectedNode) aStarNode1.getNode());
 
+        if(edge != null){
+            cost = (double) edge.getObject();
+
+        }
+
+        return cost;
     }
 
-    return cost;
-}
+    @Override
+    public double h(Node node) {
+        double h = 0d;
+        Coordinate destCoor = (Coordinate) destination.getObject();    Coordinate nodeCoor = (Coordinate) node.getObject();
+        distance = destCoor.distance(nodeCoor);
 
-@Override
-public double h(Node node) {
-    double h = 0d;
-    Coordinate destCoor = (Coordinate) destination.getObject();    Coordinate nodeCoor = (Coordinate) node.getObject();
-    distance = destCoor.distance(nodeCoor);
-
-    return distance;
-}
+        return distance;
+    }
 };
 ```
 
@@ -203,27 +200,27 @@ public double h(Node node) {
 
 传入构建好的graph，起点Node，终点Node和权重函数。通过AstarShortestPathFinder中的calculate()进行计算并最终会返回路径
 
-```
-    public Path findAStarShortestPath(Graph graph, Node source, Node destination, AStarIterator.AStarFunctions asFunction) throws Exception {
-        Path shortestPath;
+```java
+public Path findAStarShortestPath(Graph graph, Node source, Node destination, AStarIterator.AStarFunctions asFunction) throws Exception {
+    Path shortestPath;
 
-        // 求解最短路径
-        AStarShortestPathFinder pf = new AStarShortestPathFinder(graph, source, destination, asFunction);
-        // geotools 20.x 以上的版本才支持有向图的查找，其他版本会将有向图视作无向图
-        pf.calculate();
-        shortestPath = pf.getPath();
-        return shortestPath;
-    }
+    // 求解最短路径
+    AStarShortestPathFinder pf = new AStarShortestPathFinder(graph, source, destination, asFunction);
+    // geotools 20.x 以上的版本才支持有向图的查找，其他版本会将有向图视作无向图
+    pf.calculate();
+    shortestPath = pf.getPath();
+    return shortestPath;
+}
 ```
 
 返回的path中是路径中包含的所有Node，可以将路径遍历出来
 
-```
+```java
 Iterator it = path.iterator();
 String result = "";
 while (it.hasNext()) {
-      Node node = (Node) it.next();
-      result = result + node.getObject().toString(); 
+    Node node = (Node) it.next();
+    result = result + node.getObject().toString(); 
 }
 ```
 
