@@ -46,8 +46,6 @@ Add Item-Add Map
 
 ![img](https://pic3.zhimg.com/80/v2-0227504b5a3ac68dfbb0f24d871e80de_720w.jpg)
 
-
-
 添加地图格网
 
 点击下图绿色加号，添加格网，点击Modify Grid，对格网进行修改
