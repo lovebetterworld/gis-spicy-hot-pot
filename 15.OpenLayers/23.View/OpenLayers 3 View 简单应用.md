@@ -111,19 +111,14 @@ view: new ol.View({
 ```javascript
 // 设置显示地图的视图
 view: new ol.View({
-
     //设置成都为地图中心
     center: [104.06, 30.67],
-
     //指定投影
     projection: 'EPSG:4326',
-
     //设置地图初始缩放级别
     zoom: 10
-
     // 设置地图缩放最小级别为10
     minZoom: 10,
-
     //设置地图缩放最大级别为14
     maxZoom: 14
 }),
@@ -149,7 +144,6 @@ view: new ol.View({
 
     // 创建地图
     new ol.Map({
-
         // 设置地图图层
         layers: [
             // 创建一个使用Open Street Map地图源的瓦片图层
@@ -163,27 +157,19 @@ view: new ol.View({
 
             //设置成都为地图中心
             center: [104.06, 30.67],
-
             //指定投影
             projection: 'EPSG:4326',
-
             //设置地图初始缩放级别
             zoom: 10
-			
             // 设置地图缩放最小级别为10
             minZoom: 10,
-			
 			//设置地图缩放最大级别为14
             maxZoom: 14
         }),
-
         // 让id为map的div作为地图的容器
         target: 'map'
-
     });
-
 </script>
 </body>
-
 </html>
 ```
