@@ -1,18 +1,16 @@
 - [geoTools的A*（A star）算法计算最优路径 - 掘金 (juejin.cn)](https://juejin.cn/post/6844904020595884046)
 
-## 概述
+## 1 概述
 
-寻路算法有很多种，A*寻路算法被公认为最好的寻路算法。
+寻路算法有很多种，A*寻路算法被公认为最好的寻路算法，对A*算法的原理想要详细了解的，推荐以下两篇文章
 
-对A*算法的原理想要详细了解的，推荐以下两篇文章
+- [blog.csdn.net/qq_36946274…](https://link.juejin.cn?target=https%3A%2F%2Fblog.csdn.net%2Fqq_36946274%2Farticle%2Fdetails%2F81982691)
 
-[blog.csdn.net/qq_36946274…](https://link.juejin.cn?target=https%3A%2F%2Fblog.csdn.net%2Fqq_36946274%2Farticle%2Fdetails%2F81982691)
-
-[blog.csdn.net/denghecsdn/…](https://link.juejin.cn?target=https%3A%2F%2Fblog.csdn.net%2Fdenghecsdn%2Farticle%2Fdetails%2F78778769)
+- [blog.csdn.net/denghecsdn/…](https://link.juejin.cn?target=https%3A%2F%2Fblog.csdn.net%2Fdenghecsdn%2Farticle%2Fdetails%2F78778769)
 
 本文主要内容不会对A*算法的详细介绍，而是通过已经实现的A*算法的geotools工具来寻找最优路径。
 
-## 核心依赖包
+## 2 核心依赖包
 
 开发语言java
 
@@ -26,39 +24,37 @@
 
 Geotools提供了一个Graph的扩展包，这个扩展包不只是对A*算法进行了实现，也对算法[Dijkstra](https://link.juejin.cn?target=http%3A%2F%2Fwww.cnblogs.com%2FE%3A%2Fgis%E8%B5%84%E6%96%99%2F%E5%BC%80%E6%BA%90%E8%B5%84%E6%96%99%2Fgeotools-14.2-doc%2Fapidocs%2Forg%2Fgeotools%2Fgraph%2Fpath%2FDijkstraShortestPathFinder.html)进行了实现，两种算法在Geotools中的用法基本一致。
 
-## 基本概念介绍
+## 3 基本概念介绍
 
 ![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/12/13/16efe8d961d12391~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
 
-### Graph（图）
+### 3.1 Graph（图）
 
 可以理解为是一个将要建模的对象的容器，图里面存放的是很多的点（node）和边（edge）。
 
-### Node（点）
+### 3.2 Node（点）
 
 Node（点）是将要建模的对象，它可以指的是实际地图中的一个坐标点，也可以指的是任意坐标系中的一个点，也可以指的是拓扑图里面的一个节点。构建好的Node全部都存放在Graph中。
 
-### Edge（边）
+### 3.3 Edge（边）
 
 边是指两个Node（点）的关联，一个边下面会有两个点，在图中的边是认为两个点之间可到达，边下面两个点分别表示NodeA和NodeB，节点方向为NodeA->NodeB,
 
-## 第一步：构图
+## 4 第一步：构图
 
 既然是路径搜索，那必然是在图上进行搜索，无论是实际的地图，平面图还是流程图或者是自己构想的概念图，首先需要构建出一张图，然后才能在给定的图中根据条件去搜索最短路径。图是由很多的点和边构成，所以构图的同时要构建点和边，放到图中。
 
 构图可以有多种方式：
 
-### 1、通过导入shp文件构建
+### 4.1 通过导入shp文件构建
 
-该文件格式已经成为了地理信息软件界的一个开放标准
-
-需要引入依赖
+该文件格式已经成为了地理信息软件界的一个开放标准，需要引入依赖
 
 ```xml
 <dependency>
     <groupId>org.geotools</groupId>
     <artifactId>gt-shapefile</artifactId>
-    <version>18.4</version>
+    <version>24.2</version>
 </dependency>
 ```
 
@@ -87,7 +83,7 @@ private static Graph buildGraph(FeatureCollection fc) {
 }
 ```
 
-### 2、LineString
+### 4.2 LineString
 
 和上面的方式差不多，传入LineString的数据格式，通过LineStringGraphGenerator构建图，生成器会将lineString转换成图中的点和边放入图中
 
@@ -97,11 +93,11 @@ lineStringGraphGenerator.add(lineString);
 BasicDirectedGraph graph = (BasicDirectedGraph)generator.getGraph();
 ```
 
-### 3、手动构建
+### 4.3 手动构建
 
 通过GraphGenerator手动构建Node（点）和Edge（边）来构造图。这种方式虽然需要手动去绘制点和边，但灵活性最高，可以构建流程图或是构想的概念图。
 
-#### 简单介绍构图的辅助类有向图生成器BasicDirectedGraphGenerator 
+#### 4.3.1 简单介绍构图的辅助类有向图生成器BasicDirectedGraphGenerator 
 
 该生成器继承GraphGenerator，内部使用了一个有向图构造器BasicDirectedGraphBuilder来构造点、边和图。该构造器继承了BasicGraphBuilder，如下图源码
 
@@ -109,7 +105,7 @@ BasicDirectedGraph graph = (BasicDirectedGraph)generator.getGraph();
 
 可以发现，构建器在构建(Node)点和(Edge)边时，是用了HashSet来作为底层数据结构存储，**所以这里需要注意一个问题：当用这个方法手动构建时，需要用到多线程进行批量建模的时候，要注意线程安全的问题。**
 
-#### 构造Node(点)
+#### 4.3.2 构造Node(点)
 
 ```
 Node node = graphGenerator.getGraphBuilder().buildNode();
@@ -137,7 +133,7 @@ m_In和m_out存放的是当前Node有关系的边，m_In表示的是方向指向
 node.setObject(new Coordinate(26.061743,119.169153));
 ```
 
-#### 构造Edge(边)
+#### 4.3.3 构造Edge(边)
 
 Edge表示的就是图里面Node与Node之间的关系，所以一个边是包含了两个点。有边也认为两个点之间是可直达的。
 
@@ -154,7 +150,7 @@ graphGenerator.getGraphBuilder().addEdge(edge);
 
 ![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/12/14/16f04096dde771ae~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
 
-#### 获取图（Graph）
+#### 4.3.4 获取图（Graph）
 
 当完成点和边的构造之后，图也就构造完了，直接从生成器中getGraph()即可得到图
 
@@ -162,7 +158,7 @@ graphGenerator.getGraphBuilder().addEdge(edge);
 Graph graph = graphGenerator.getGraph();
 ```
 
-## 第二步：设值权重，编写消耗函数和启发函数
+## 4.4 第二步：设值权重，编写消耗函数和启发函数
 
 这部分是寻找最短路径中的核心，不同权重的设值，对于最后计算出的结果息息相关
 
@@ -176,34 +172,30 @@ AStarIterator.AStarFunctions asFunction = new AStarIterator.AStarFunctions(desti
         Edge edge;
         double cost = Integer.MAX_VALUE;
         edge = ((DirectedNode)aStarNode.getNode()).getOutEdge((DirectedNode) aStarNode1.getNode());
-
         if(edge != null){
             cost = (double) edge.getObject();
-
         }
-
         return cost;
     }
 
     @Override
     public double h(Node node) {
         double h = 0d;
-        Coordinate destCoor = (Coordinate) destination.getObject();    Coordinate nodeCoor = (Coordinate) node.getObject();
+        Coordinate destCoor = (Coordinate) destination.getObject();    
+        Coordinate nodeCoor = (Coordinate) node.getObject();
         distance = destCoor.distance(nodeCoor);
-
         return distance;
     }
 };
 ```
 
-## 第三步：寻找最短路径
+## 4.5 第三步：寻找最短路径
 
 传入构建好的graph，起点Node，终点Node和权重函数。通过AstarShortestPathFinder中的calculate()进行计算并最终会返回路径
 
 ```java
 public Path findAStarShortestPath(Graph graph, Node source, Node destination, AStarIterator.AStarFunctions asFunction) throws Exception {
     Path shortestPath;
-
     // 求解最短路径
     AStarShortestPathFinder pf = new AStarShortestPathFinder(graph, source, destination, asFunction);
     // geotools 20.x 以上的版本才支持有向图的查找，其他版本会将有向图视作无向图
@@ -226,7 +218,7 @@ while (it.hasNext()) {
 
 Path中遍历出来的路径是从终点到起点的，例如实际最短路径是NodeA-> NodeD -> NodeB ->NodeC，从path中遍历出来的结果是NodeC、NodeB、NodeD、NodeA
 
-**tips**：
+## **tips**：
 
 这里还有一个点需要说明，由于寻找最短路径时，我们需要给定start Node和destination Node，但是通常情况下我们一般给定的是两个坐标点，或者两个流程节点的标识。
 

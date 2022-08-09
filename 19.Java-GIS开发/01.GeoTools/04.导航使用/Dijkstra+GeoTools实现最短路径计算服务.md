@@ -1,4 +1,4 @@
-- [Dijkstra+GeoTools实现最短路径计算服务 - 简书 (jianshu.com)](https://www.jianshu.com/p/d16683d849ec)
+- [`Dijkstra+GeoTools实现最短路径计算服务 - 简书 (jianshu.com)](https://www.jianshu.com/p/d16683d849ec)
 
 ## 为什么会有这篇
 
